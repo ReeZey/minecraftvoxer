@@ -1,9 +1,10 @@
-extern crate vox_writer;
+mod vox_writer;
 
 use simple_anvil::chunk::Chunk;
 pub(crate) use simple_anvil::{region::Region};
+pub(crate) use vox_writer::{vox_writer::VoxWriter};
+
 use std::{collections::HashMap, time::SystemTime};
-use vox_writer::VoxWriter;
 
 #[allow(non_snake_case)]
 fn main() {
@@ -50,7 +51,7 @@ fn main() {
 
     for voxX in 0..4 {
         for voxY in 0..4 {
-            let mut vox = vox_writer::VoxWriter::create_empty();
+            let mut vox = VoxWriter::create(128,128,48);
             setupColor(&mut vox);
 
             let voxXNum = voxX * 8;
